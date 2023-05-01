@@ -9,20 +9,31 @@ import { AuthService } from '../auth.service';
 export class LoginComponent {
   constructor(private authService: AuthService) { }
 
-  username = '';
-  password = '';
+  username: string = '';
+  password: string = '';
+  showErrorMessage = false;
 
   onSubmit() {
     this.authService.login(this.username, this.password).subscribe(
       response => {
         console.log('Login successful:', response);
+        this.showErrorMessage = false; 
       },
       error => {
         console.log('Login error:', error);
+        if (error.status === 401) {
+          this.showErrorMessage = true;
+        }
       }
     );
   }
+  
 }
+
+
+
+
+
 
 
 
