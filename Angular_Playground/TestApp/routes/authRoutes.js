@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { registerUser } = require('../controllers/authController');
+const { authenticateUser } = require('../controllers/authController');
 
 router.post('/register', async (req, res) => {
   const { username, password } = req.body;
