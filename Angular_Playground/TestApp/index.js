@@ -1,14 +1,16 @@
-const dbConnection = require('./dbConnect.js');
+require('dotenv').config();
+const express = require('express');
+const app = express();
+const port = 3000;
 
-const getAllTestData = async () => {
-    try {
-      const result = await dbConnection.query('SELECT * FROM users;');
-      return result.rows;
-    } catch (err) {
-      console.error('Error fetching data from test table:', err);
-      return [];
-    }
-  };
+const authRoutes = require('./routes/authRoutes');
+
+app.use(express.json()); // Middleware for parsing JSON request bodies
+app.use('/api', authRoutes); // Use the authRoutes for any requests starting with /api
+
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
+});
 
 
 
