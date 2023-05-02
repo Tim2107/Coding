@@ -1,7 +1,8 @@
+<app-animated-background></app-animated-background>
 <form (ngSubmit)="onSubmit()">
   <div class="container">
     <div class="login-form">
-      <h1>Login</h1>
+      <h1>WELCOME</h1>
       <form (submit)="onSubmit()">
         <div class="form-group">
           <input id="username" type="text" [(ngModel)]="username" name="username" required placeholder="Username" />
@@ -9,7 +10,10 @@
         <div class="form-group">
           <input id="password" type="password" [(ngModel)]="password" name="password" required placeholder="Password" />
         </div>
-        <button id="submit" type="submit">Log in</button>
+        <div class="buttons-container">
+          <button id="submit" type="submit">Log in</button>
+          <button id="signup" type="button" routerLink="/signup">Sign up</button>
+        </div>
         <div *ngIf="showErrorMessage" class="error-message">
           Username or password invalid
         </div>
@@ -18,5 +22,4 @@
   </div>
 </form>
 
-  
   
